@@ -10,10 +10,7 @@ export default function Home() {
         <>
             <Head>
                 <title>Câu lạc bộ Ánh Sáng</title>
-                <meta
-                    name='description'
-                    content='Nextly is a free landing page template built with next.js & Tailwind CSS'
-                />
+                <meta name='description' content='Trung tâm toán câu lạc bộ Ánh Sáng luyện thi từ lớp 8 đến lớp 12' />
                 <link rel='icon' href='/favicon.ico' />
             </Head>
 

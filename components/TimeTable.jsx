@@ -89,11 +89,10 @@ const TimeTable = () => {
 
     return (
         <Container>
-
             {parent.map((parentElement, parentId) => (
                 <div key={parentElement.no}
                     className={classNames(parentId !== parent.length - 1 ? 'mb-12' : '',
-                        'px-4 sm:px-6 lg:px-8'
+                        'lg:px-8'
                     )}
                 >
                     <div className="lg:flex lg:justify-between lg:items-center">
@@ -153,7 +152,7 @@ const TimeTable = () => {
                                         <td
                                             className={classNames(
                                                 personIdx !== parentElement.child.length - 1 ? 'border-b border-gray-200' : '',
-                                                'whitespace-nowrap p-3.5 text-sm text-gray-500 table-cell'
+                                                ' p-3.5 text-sm text-gray-500 table-cell'
                                             )}
                                         >
                                             {person.subject}
@@ -162,7 +161,7 @@ const TimeTable = () => {
                                         <td
                                             className={classNames(
                                                 personIdx !== parentElement.child.length - 1 ? 'border-b border-gray-200' : '',
-                                                'whitespace-nowrap p-3.5 text-sm text-gray-500  table-cell'
+                                                ' p-3.5 text-sm text-gray-500  table-cell'
                                             )}
                                         >
                                             {person.teacher}
@@ -171,7 +170,7 @@ const TimeTable = () => {
                                         <td
                                             className={classNames(
                                                 personIdx !== parentElement.child.length - 1 ? 'border-b border-gray-200' : '',
-                                                'whitespace-nowrap p-3.5 text-sm text-gray-500  table-cell'
+                                                ' p-3.5 text-sm text-gray-500  table-cell'
                                             )}
                                         >
                                             {person.time}
@@ -181,20 +180,9 @@ const TimeTable = () => {
                             </tbody>
                         </table>
                     </div>
-
-
-
                 </div>
             ))}
-
-
-
-
         </Container>
-
-
-
-
     )
 }
 
