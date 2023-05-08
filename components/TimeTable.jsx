@@ -20,7 +20,7 @@ const TimeTable = () => {
                 }
             ],
             contact: 'Liên hệ cô Hường phụ trách lớp',
-            phone: '036852758'
+            phone: '0362860970'
         },
         {
             no: 2,
@@ -58,7 +58,7 @@ const TimeTable = () => {
                 }
             ],
             contact: 'Liên hệ cô Hường phụ trách lớp',
-            phone: '036852758'
+            phone: '0362860970'
         },
         {
             no: 4,
