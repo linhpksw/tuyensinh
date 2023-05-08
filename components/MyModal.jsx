@@ -194,11 +194,15 @@ export default function MyModal({ onClose, registerPhone }) {
                                         <div className="mt-2">
                                             <button
                                                 type="submit"
-                                                className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                                            // onClick={closeModal}
+                                                className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2  font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+
                                             >
                                                 Đăng ký
                                             </button>
+
+                                            <button type="button" onClick={closeModal} class="text-rose-700 hover:text-white border border-rose-700 hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 font-medium rounded-lg  px-4 py-2 text-center mr-2 mb-2 ml-4">Huỷ đăng ký</button>
+
+
                                         </div>
                                     </form>
 
