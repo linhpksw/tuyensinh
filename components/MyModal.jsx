@@ -8,7 +8,6 @@ export default function MyModal({ onClose, registerPhone }) {
 
     let [isOpen, setIsOpen] = useState(true)
 
-
     function closeModal() {
         setIsOpen(false);
         onClose(); // call the onClose function passed from MyForm
@@ -122,7 +121,7 @@ export default function MyModal({ onClose, registerPhone }) {
         // Redirect the user to the new student details page
         const { id } = result;
 
-        router.push(`/u/${id}`)
+        router.push(`/${id}`)
     }
 
     return (
