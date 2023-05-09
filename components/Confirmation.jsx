@@ -1,6 +1,8 @@
 import Container from "./Container";
 import { CheckBadgeIcon } from "@heroicons/react/24/solid";
-import { UserIcon, UsersIcon } from "@heroicons/react/24/outline";
+import { UserIcon, UsersIcon, ArrowRightIcon, HomeIcon } from "@heroicons/react/24/outline";
+
+import Link from "next/link";
 
 const Confirmation = ({ data }) => {
 
@@ -37,9 +39,20 @@ const Confirmation = ({ data }) => {
 
     return (
         <Container>
-            <main className="bg-white pt-14">
+            <main className="bg-white pt-10">
+                <div className="flex justify-between">
+                    <h1 className="text-base font-medium text-indigo-600">Cảm ơn quý phụ huynh!</h1>
 
-                <h1 className="text-base font-medium text-indigo-600">Cảm ơn quý phụ huynh!</h1>
+                    <Link href='/' class="font-medium hidden sm:flex">
+                        <div class="flex items-center gap-2 group text-indigo-600 hover:text-indigo-500 transition ease-in-out duration-200">Trang chủ <span aria-hidden="true" class="inline-block translate-x-0 group-hover:translate-x-1 transition-transform ease-in-out duration-200"><ArrowRightIcon className="w-5 h-5" /></span></div>
+                    </Link>
+
+                    <Link href='/' className="sm:hidden">
+                        <HomeIcon className="w-6 h-6 text-indigo-600 hover:text-indigo-500" />
+                    </Link>
+                </div>
+
+
 
                 <div className="flex items-center gap-2 mt-3">
                     <p className="text-2xl lg:text-4xl font-bold tracking-tighter text-gray-900">Đăng kí học thành công</p>
@@ -56,7 +69,7 @@ const Confirmation = ({ data }) => {
                         } else {
                             return ', ' + v.studentName;
                         }
-                    })} đã được trung tâm xác nhận.</p>
+                    })} đã được xác nhận với thông tin như sau:</p>
 
                 <div className="mt-10">
                     {listStudents}

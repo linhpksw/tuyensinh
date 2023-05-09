@@ -152,7 +152,7 @@ const TimeTable = () => {
                                         <td
                                             className={classNames(
                                                 personIdx !== parentElement.child.length - 1 ? 'border-b border-gray-200' : '',
-                                                'p-3.5 text-sm text-gray-500 table-cell'
+                                                ' p-3.5 text-sm text-gray-500 table-cell'
                                             )}
                                         >
                                             {person.subject}
