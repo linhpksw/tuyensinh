@@ -77,7 +77,7 @@ export default function EditModal({ onClose, data }) {
             fields.push(
                 <div key={i}>
                     {/* Thong tin hoc sinh */}
-                    <div className='flex items-center gap-1 mb-4'>
+                    <div className='flex items-center gap-1 mb-5'>
                         <UserIcon className="h-6 w-6 text-rose-600" />
                         <span className='text-rose-600 font-medium text-lg'>{numStudents == 1 ? 'Thông tin học sinh' : 'Thông tin học sinh thứ ' + i}</span>
                     </div>
@@ -175,7 +175,7 @@ export default function EditModal({ onClose, data }) {
 
                                     <form onSubmit={handleSubmit}>
                                         <div>
-                                            <select id="quantity" value={numStudents} onChange={handleNumStudentsChange} className="mb-6 block py-2.5 px-0 w-full text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                                            <select id="quantity" value={numStudents} onChange={handleNumStudentsChange} className="mb-4 block py-2.5 px-0 w-full text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer">
 
                                                 {[1, 2, 3, 4, 5].map((num, id) =>
                                                     (<option key={id} value={num} className=" text-gray-500">Đăng kí cho {num} học sinh</option>)

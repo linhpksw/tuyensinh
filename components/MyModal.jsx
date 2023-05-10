@@ -33,7 +33,7 @@ export default function MyModal({ onClose, registerPhone }) {
             fields.push(
 
                 <div key={i}>
-                    <div className='flex items-center gap-1 mb-4'>
+                    <div className='flex items-center gap-1 mb-5'>
                         <UserIcon className="h-6 w-6 text-rose-600" />
                         <span className='text-rose-600 font-medium text-lg'>{numStudents == 1 ? 'Thông tin học sinh' : 'Thông tin học sinh thứ ' + i}</span>
                     </div>
@@ -67,7 +67,7 @@ export default function MyModal({ onClose, registerPhone }) {
                     </div>
 
                     <div>
-                        <select id={`subject${i}`} className="mb-6 block py-2.5 px-0 w-full text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer" required>
+                        <select id={`subject${i}`} className="mb-4 block py-2.5 px-0 w-full text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer" required>
                             {classOptions.map((option) => (
                                 <option key={option} value={option} className=' text-gray-500'>{option}</option>
                             ))}
