@@ -17,7 +17,7 @@ export default async function handler(req, res) {
                 studentPhone: item.studentPhone,
                 school: item.school,
                 year: item.year,
-                class: item.class,
+                subject: item.subject,
                 backupPhone: item.backupPhone,
                 email: item.email,
             };

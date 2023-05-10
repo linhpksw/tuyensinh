@@ -1,17 +1,47 @@
 import Container from "./Container";
+import EditModal from "./EditModal";
+
+import { useState } from "react";
 import { CheckBadgeIcon } from "@heroicons/react/24/solid";
 import { UserIcon, UsersIcon, ArrowRightIcon, HomeIcon } from "@heroicons/react/24/outline";
 
 import Link from "next/link";
 
 const Confirmation = ({ data }) => {
+    const [showModal, setShowModal] = useState(false);
+
+
+    const handleEdit = () => {
+        setShowModal(true);
+    }
+
+    const handleDelete = () => {
+
+    }
+
+    const closeModal = () => {
+        setShowModal(false);
+    };
+
 
     const listStudents = data.map((v, i) => (
-        <>
-            <div className="flex items-center gap-1">
-                <UserIcon className="h-6 w-6 text-rose-600" />
-                <h3 className="text-lg font-medium leading-6 text-rose-600">{data.length > 1 ? `Thông tin học sinh thứ ${i + 1}` : 'Thông tin học sinh'}</h3>
+        <div key={i}>
+            <div className="flex justify-between items-center">
+                <div className="flex items-center gap-1">
+                    <UserIcon className="h-6 w-6 text-rose-600" />
+                    <h3 className="text-lg font-medium leading-6 text-rose-600">{data.length > 1 ? `Thông tin học sinh thứ ${i + 1}` : 'Thông tin học sinh'}</h3>
+                </div>
+
+                {i == 0 ? <div className="hidden sm:block">
+                    <button onClick={handleEdit} className="inline-flex justify-center rounded-md border border-transparent bg-indigo-100 px-4 py-2  font-medium text-indigo-900 hover:bg-indigo-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2">
+                        Chỉnh sửa
+                    </button>
+
+                    <button onClick={handleDelete} type="button" className="text-rose-700 hover:text-white border border-rose-700 hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 font-medium rounded-lg  px-4 py-2 text-center mr-2 mb-2 ml-4">Xoá thông tin</button>
+                </div> : null}
+
             </div>
+
 
             <div className="mt-5 mb-10 border-t border-gray-200">
                 <dl className="divide-y divide-gray-200">
@@ -33,7 +63,7 @@ const Confirmation = ({ data }) => {
                     </div>
                 </dl>
             </div>
-        </>
+        </div>
     ))
 
 
@@ -43,16 +73,14 @@ const Confirmation = ({ data }) => {
                 <div className="flex justify-between">
                     <h1 className="text-base font-medium text-indigo-600">Cảm ơn quý phụ huynh!</h1>
 
-                    <Link href='/' class="font-medium hidden sm:flex">
-                        <div class="flex items-center gap-2 group text-indigo-600 hover:text-indigo-500 transition ease-in-out duration-200">Trang chủ <span aria-hidden="true" class="inline-block translate-x-0 group-hover:translate-x-1 transition-transform ease-in-out duration-200"><ArrowRightIcon className="w-5 h-5" /></span></div>
+                    <Link href='/' className="font-medium hidden sm:block">
+                        <div className="flex items-center gap-2 group text-indigo-600 hover:text-indigo-500 transition ease-in-out duration-200">Trang chủ <span aria-hidden="true" className="inline-block translate-x-0 group-hover:translate-x-1 transition-transform ease-in-out duration-200"><ArrowRightIcon className="w-5 h-5" /></span></div>
                     </Link>
 
                     <Link href='/' className="sm:hidden">
                         <HomeIcon className="w-6 h-6 text-indigo-600 hover:text-indigo-500" />
                     </Link>
                 </div>
-
-
 
                 <div className="flex items-center gap-2 mt-3">
                     <p className="text-2xl lg:text-4xl font-bold tracking-tighter text-gray-900">Đăng kí học thành công</p>
@@ -80,7 +108,7 @@ const Confirmation = ({ data }) => {
                     </div>
 
                     <div className="mt-5 border-t border-gray-200">
-                        <dl className="sm:divide-y sm:divide-gray-200">
+                        <dl className="divide-y divide-gray-200">
                             <div className="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5">
                                 <dt className="font-medium text-gray-500">Email</dt>
                                 <dd className="mt-1 text-gray-900 sm:col-span-2 sm:mt-0">{data[0].email}</dd>
@@ -92,8 +120,16 @@ const Confirmation = ({ data }) => {
 
                         </dl>
                     </div>
-
                 </div>
+
+                <div className="sm:hidden mt-4">
+                    <button onClick={handleEdit} className="inline-flex justify-center rounded-md border border-transparent bg-indigo-100 px-4 py-2  font-medium text-indigo-900 hover:bg-indigo-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2">
+                        Chỉnh sửa
+                    </button>
+
+                    <button onClick={handleDelete} type="button" className="text-rose-700 hover:text-white border border-rose-700 hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 font-medium rounded-lg  px-4 py-2 text-center mr-2 mb-2 ml-4">Xoá thông tin</button>
+                </div>
+                {showModal && <EditModal onClose={closeModal} data={data} />}
             </main>
         </Container>
     )

@@ -1,13 +1,9 @@
-import { useRouter } from 'next/router';
-
 import { MongoClient } from 'mongodb';
 import Confirmation from '@/components/Confirmation';
 const uri = 'mongodb+srv://linhpksw:Bmcmc20@tuyensinh.uptfdvd.mongodb.net/';
 const client = new MongoClient(uri);
 
 export default function StudentDetails(props) {
-    const router = useRouter();
-    const { id } = router.query; // Get the ID from the URL path
     const { data } = props;
 
     return <Confirmation data={data} />;
