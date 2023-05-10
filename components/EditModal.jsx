@@ -104,7 +104,7 @@ export default function EditModal({ onClose, data }) {
 
                     <div className="grid md:grid-cols-2 md:gap-6">
                         {/* Truong */}
-                        <div className="relative z-0 w-full mb-3 group">
+                        <div className="relative z-0 w-full mb-6 group">
                             <input
                                 defaultValue={student.school || ''}
                                 id={`school${i}`} type="text" name="school" className="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
