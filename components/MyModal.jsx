@@ -67,7 +67,7 @@ export default function MyModal({ onClose, registerPhone }) {
                     </div>
 
                     <div>
-                        <select id={`subject${i}`} className="mb-4 block py-2.5 px-0 w-full text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-gray-300 peer" required>
+                        <select id={`subject${i}`} className="mb-5 block py-2.5 px-0 w-full text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-gray-300 peer" required>
                             {classOptions.map((option) => (
                                 <option key={option} value={option} className=' text-gray-500'>{option}</option>
                             ))}
@@ -160,7 +160,7 @@ export default function MyModal({ onClose, registerPhone }) {
 
                                     <form onSubmit={handleSubmit}>
                                         <div>
-                                            <select id="quantity" value={numStudents} onChange={handleNumStudentsChange} className="mb-6 block py-2.5 px-0 w-full text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-gray-300 peer">
+                                            <select id="quantity" value={numStudents} onChange={handleNumStudentsChange} className="mb-5 block py-2.5 px-0 w-full text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-gray-300 peer">
 
                                                 {[1, 2, 3, 4, 5].map((num, id) =>
                                                     (<option key={id} value={num} className=" text-gray-500">Đăng kí cho {num} học sinh</option>)
