@@ -84,50 +84,56 @@ export default function MyModal({ onClose, registerPhone }) {
     const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        setIsLoading(true);
+        try {
+            e.preventDefault();
+            setIsLoading(true);
 
-        let data = [];
+            let data = [];
 
-        const str = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-        const nanoid = customAlphabet(str, 6);
+            const str = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+            const nanoid = customAlphabet(str, 6);
 
-        for (let i = 1; i <= numStudents; i++) {
-            data.push({
-                studentId: nanoid(),
-                registerPhone: registerPhone,
-                studentName: e.target[`studentName${i}`].value,
-                studentPhone: e.target[`studentPhone${i}`].value,
-                school: e.target[`school${i}`].value,
-                year: e.target[`year${i}`].value,
-                subject: e.target[`subject${i}`].value,
-                backupPhone: e.target.backupPhone.value,
-                email: e.target.email.value
-            })
+            for (let i = 1; i <= numStudents; i++) {
+                data.push({
+                    studentId: nanoid(),
+                    registerPhone: registerPhone,
+                    studentName: e.target[`studentName${i}`].value,
+                    studentPhone: e.target[`studentPhone${i}`].value,
+                    school: e.target[`school${i}`].value,
+                    year: e.target[`year${i}`].value,
+                    subject: e.target[`subject${i}`].value,
+                    backupPhone: e.target.backupPhone.value,
+                    email: e.target.email.value
+                })
+            }
+
+            const JSONdata = JSON.stringify(data);
+            const endpoint = '/api/form';
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSONdata,
+            };
+
+            const response = await fetch(endpoint, options);
+
+            const result = await response.json();
+
+            const { status } = result;
+
+            if (status === 'failed') {
+                alert('Đã có lỗi xảy ra. Vui lòng thử lại sau!');
+            } else if (status === 'success') {
+                router.push(`/${registerPhone}`);
+            }
+
+        } catch (error) {
+            console.err(error);
+        } finally {
+            setIsLoading(false);
         }
-
-        const JSONdata = JSON.stringify(data);
-        const endpoint = '/api/form';
-        const options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSONdata,
-        };
-
-        const response = await fetch(endpoint, options);
-
-        const result = await response.json();
-
-        const { status } = result;
-
-        if (status === 'failed') {
-            alert('Đã có lỗi xảy ra. Vui lòng thử lại sau!');
-        } else if (status === 'success') {
-            router.push(`/${registerPhone}`);
-        }
-        setIsLoading(false);
     }
 
     return (
