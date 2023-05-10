@@ -104,14 +104,14 @@ export default function EditModal({ onClose, data }) {
 
                     <div className="grid md:grid-cols-2 md:gap-6">
                         {/* Truong */}
-                        <div className="relative z-0 w-full mb-6 group">
+                        <div className="relative z-0 w-full mb-3 group">
                             <input
                                 defaultValue={student.school || ''}
                                 id={`school${i}`} type="text" name="school" className="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                             <label htmlFor="school" className="peer-focus:font-medium absolute  text-gray-500 duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 peer-focus:scale-75 peer-focus:-translate-y-6">Trường <span className='text-red-600'>*</span></label>
                         </div>
                         {/* So dien thoai */}
-                        <div className="relative z-0 w-full mb-6 group">
+                        <div className="relative z-0 w-full mb-3 group">
                             <input
                                 defaultValue={student.studentPhone || ''}
                                 id={`studentPhone${i}`} type="tel" name="studentPhone" className="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
@@ -123,7 +123,7 @@ export default function EditModal({ onClose, data }) {
                     <div>
                         <select
                             defaultValue={student.subject || ''}
-                            id={`subject${i}`} className="mb-6 block py-2.5 px-0 w-full text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer" required>
+                            id={`subject${i}`} className="mb-6 block py-2.5 px-0 w-full text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-gray-300 peer" required>
                             {subjectOptions.map((option) => (
                                 <option key={option} value={option} className=' text-gray-500'>{option}</option>
                             ))}

@@ -54,12 +54,12 @@ export default function MyModal({ onClose, registerPhone }) {
 
 
                     <div className="grid md:grid-cols-2 md:gap-6">
-                        <div className="relative z-0 w-full mb-6 group">
+                        <div className="relative z-0 w-full mb-3 group">
                             <input id={`school${i}`} type="text" name="school" className="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                             <label htmlFor="school" className=" peer-focus:font-medium absolute  text-gray-500 duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 peer-focus:scale-75 peer-focus:-translate-y-6">Trường <span className='text-red-600'>*</span></label>
                         </div>
 
-                        <div className="relative z-0 w-full mb-6 group">
+                        <div className="relative z-0 w-full mb-3 group">
                             <input id={`studentPhone${i}`} type="tel" name="studentPhone" className="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
 
                             <label htmlFor="studentPhone" className=" peer-focus:font-medium absolute text-gray-500 duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 peer-focus:scale-75 peer-focus:-translate-y-6">Số điện thoại</label>
@@ -67,7 +67,7 @@ export default function MyModal({ onClose, registerPhone }) {
                     </div>
 
                     <div>
-                        <select id={`subject${i}`} className="mb-4 block py-2.5 px-0 w-full text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer" required>
+                        <select id={`subject${i}`} className="mb-4 block py-2.5 px-0 w-full text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-gray-300 peer" required>
                             {classOptions.map((option) => (
                                 <option key={option} value={option} className=' text-gray-500'>{option}</option>
                             ))}
@@ -160,7 +160,7 @@ export default function MyModal({ onClose, registerPhone }) {
 
                                     <form onSubmit={handleSubmit}>
                                         <div>
-                                            <select id="quantity" value={numStudents} onChange={handleNumStudentsChange} className="mb-6 block py-2.5 px-0 w-full text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                                            <select id="quantity" value={numStudents} onChange={handleNumStudentsChange} className="mb-6 block py-2.5 px-0 w-full text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-gray-300 peer">
 
                                                 {[1, 2, 3, 4, 5].map((num, id) =>
                                                     (<option key={id} value={num} className=" text-gray-500">Đăng kí cho {num} học sinh</option>)
