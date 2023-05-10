@@ -1,6 +1,4 @@
-import { MongoClient } from 'mongodb';
-const uri = 'mongodb+srv://linhpksw:Bmcmc20@tuyensinh.uptfdvd.mongodb.net/';
-const client = new MongoClient(uri);
+import { client } from '@/lib/mongodb';
 
 export default async function handler(req, res) {
     if (req.method !== 'PUT') {
@@ -8,18 +6,20 @@ export default async function handler(req, res) {
         return;
     }
 
-    const body = req.body;
-    const registerPhone = body[0].registerPhone;
+    const { body } = req;
 
     try {
         await client.connect();
         const database = client.db('tuyensinhdb');
         const student = database.collection('student');
 
-        const updatePromises = body.map((item) => {
-            const filter = { registerPhone: item.registerPhone };
+        for (let i = 0; i < body.length; i++) {
+            const item = body[i];
+            const filter = { studentId: item.studentId };
+
             const updateDoc = {
                 $set: {
+                    registerPhone: item.registerPhone,
                     studentName: item.studentName,
                     studentPhone: item.studentPhone,
                     school: item.school,
@@ -29,16 +29,15 @@ export default async function handler(req, res) {
                     email: item.email,
                 },
             };
-            return student.updateOne(filter, updateDoc);
-        });
 
-        const results = await Promise.all(updatePromises);
+            const result = await student.updateOne(filter, updateDoc);
 
-        if (results.every((result) => result.modifiedCount >= 1)) {
-            res.status(200).json({ id: registerPhone });
-        } else {
-            res.status(400).json({ message: 'Update failed' });
+            if (result.matchedCount != 1) {
+                res.status(400).json({ message: 'Update failed' });
+            }
         }
+
+        res.status(200).json({ status: 'success' });
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: 'Server error' });

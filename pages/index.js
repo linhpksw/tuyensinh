@@ -3,14 +3,16 @@ import Navbar from '@/components/NavBar';
 import SectionTitle from '@/components/SectionTitle';
 import TimeTable from '@/components/TimeTable';
 import Head from 'next/head';
-import Image from 'next/image';
 
 export default function Home() {
     return (
         <>
             <Head>
-                <title>Câu lạc bộ Ánh Sáng</title>
-                <meta name='description' content='Trung tâm toán câu lạc bộ Ánh Sáng luyện thi từ lớp 8 đến lớp 12' />
+                <title>Câu lạc bộ Toán Ánh Sáng</title>
+                <meta
+                    name='description'
+                    content='Trung tâm toán câu lạc bộ Ánh Sáng luyện thi toán từ lớp 8 đến lớp 12'
+                />
                 <link rel='icon' href='/favicon.ico' />
             </Head>
 

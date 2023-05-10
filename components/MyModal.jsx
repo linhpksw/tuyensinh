@@ -2,6 +2,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import { useState, Fragment } from 'react'
 import { UserIcon, UsersIcon } from '@heroicons/react/24/outline'
 import { useRouter } from 'next/router';
+import { customAlphabet } from 'nanoid';
 
 export default function MyModal({ onClose, registerPhone }) {
     const router = useRouter();
@@ -84,11 +85,16 @@ export default function MyModal({ onClose, registerPhone }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
 
         let data = [];
 
+        const str = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+        const nanoid = customAlphabet(str, 6);
+
         for (let i = 1; i <= numStudents; i++) {
             data.push({
+                studentId: nanoid(),
                 registerPhone: registerPhone,
                 studentName: e.target[`studentName${i}`].value,
                 studentPhone: e.target[`studentPhone${i}`].value,
@@ -100,7 +106,6 @@ export default function MyModal({ onClose, registerPhone }) {
             })
         }
 
-        setIsLoading(true);
         const JSONdata = JSON.stringify(data);
         const endpoint = '/api/form';
         const options = {
@@ -115,12 +120,14 @@ export default function MyModal({ onClose, registerPhone }) {
 
         const result = await response.json();
 
+        const { status } = result;
 
-        const { id } = result;
-
+        if (status === 'failed') {
+            alert('Đã có lỗi xảy ra. Vui lòng thử lại sau!');
+        } else if (status === 'success') {
+            router.push(`/${registerPhone}`);
+        }
         setIsLoading(false);
-
-        router.push(`/${id}`)
     }
 
     return (

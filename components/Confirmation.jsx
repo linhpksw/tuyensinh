@@ -7,7 +7,7 @@ import { UserIcon, UsersIcon, ArrowRightIcon, HomeIcon } from "@heroicons/react/
 
 import Link from "next/link";
 
-const Confirmation = ({ data }) => {
+const Confirmation = ({ data, onDataUpdated, registerPhone }) => {
     const [showModal, setShowModal] = useState(false);
 
 
@@ -43,7 +43,7 @@ const Confirmation = ({ data }) => {
             </div>
 
 
-            <div className="mt-5 mb-10 border-t border-gray-200">
+            <div className="mt-5 mb-6 border-t border-gray-200">
                 <dl className="divide-y divide-gray-200">
                     <div className=" py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5">
                         <dt className=" font-medium text-gray-500">Họ và tên học sinh</dt>
@@ -51,7 +51,7 @@ const Confirmation = ({ data }) => {
                     </div>
                     <div className="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5">
                         <dt className="font-medium text-gray-500">Đăng kí lớp học</dt>
-                        <dd className="mt-1 text-gray-900 sm:col-span-2 sm:mt-0">{v.class}</dd>
+                        <dd className="mt-1 text-gray-900 sm:col-span-2 sm:mt-0">{v.subject}</dd>
                     </div>
                     <div className="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5">
                         <dt className="font-medium text-gray-500">Trường</dt>
@@ -99,15 +99,17 @@ const Confirmation = ({ data }) => {
                         }
                     })} đã được xác nhận với thông tin như sau:</p>
 
-                <div className="mt-10">
+                <div className="mt-6">
                     {listStudents}
-
+                    {/* Thong tin phu huynh */}
                     <div className=" flex items-center gap-1">
                         <UsersIcon className="h-6 w-6 text-rose-600" />
                         <h3 className="text-lg font-medium leading-6 text-rose-600">Thông tin phụ huynh</h3>
                     </div>
 
+                    {/* Email va Backup Phone */}
                     <div className="mt-5 border-t border-gray-200">
+
                         <dl className="divide-y divide-gray-200">
                             <div className="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5">
                                 <dt className="font-medium text-gray-500">Email</dt>
@@ -129,7 +131,7 @@ const Confirmation = ({ data }) => {
 
                     <button onClick={handleDelete} type="button" className="text-rose-700 hover:text-white border border-rose-700 hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 font-medium rounded-lg  px-4 py-2 text-center mr-2 mb-2 ml-4">Xoá thông tin</button>
                 </div>
-                {showModal && <EditModal onClose={closeModal} data={data} />}
+                {showModal && <EditModal onClose={closeModal} data={data} onDataUpdated={onDataUpdated} registerPhone={registerPhone} />}
             </main>
         </Container>
     )

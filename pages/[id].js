@@ -1,12 +1,36 @@
-import { MongoClient } from 'mongodb';
 import Confirmation from '@/components/Confirmation';
-const uri = 'mongodb+srv://linhpksw:Bmcmc20@tuyensinh.uptfdvd.mongodb.net/';
-const client = new MongoClient(uri);
+import Head from 'next/head';
+import { client } from '@/lib/mongodb';
+import { useState } from 'react';
 
 export default function StudentDetails(props) {
-    const { data } = props;
+    const [data, setData] = useState(props.data);
 
-    return <Confirmation data={data} />;
+    const registerPhone = data[0]?.registerPhone;
+
+    const fetchData = async (registerPhone) => {
+        try {
+            const response = await fetch(`/api/get?registerPhone=${registerPhone}`);
+            const data = await response.json();
+            setData(data);
+        } catch (error) {
+            console.err(error);
+        }
+    };
+
+    return (
+        <>
+            <Head>
+                <title>Câu lạc bộ Toán Ánh Sáng</title>
+                <meta
+                    name='description'
+                    content='Trung tâm toán câu lạc bộ Ánh Sáng luyện thi toán từ lớp 8 đến lớp 12'
+                />
+                <link rel='icon' href='/favicon.ico' />
+            </Head>
+            <Confirmation data={data} onDataUpdated={fetchData} registerPhone={registerPhone} />
+        </>
+    );
 }
 
 export async function getServerSideProps(context) {
@@ -14,6 +38,7 @@ export async function getServerSideProps(context) {
 
     // Fetch the student data from the database based on the ID
     try {
+        await client.connect();
         const database = client.db('tuyensinhdb');
         const student = database.collection('student');
 

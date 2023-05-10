@@ -1,15 +1,13 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { useState, Fragment } from 'react'
+import { useState, Fragment, useEffect } from 'react'
 import { UserIcon, UsersIcon } from '@heroicons/react/24/outline'
 
-export default function EditModal({ onClose, data }) {
+export default function EditModal({ data, onDataUpdated, registerPhone, onClose }) {
     const [isOpen, setIsOpen] = useState(true);
 
-    const [formData, setFormData] = useState(data);
-
     function closeModal() {
+        onClose();
         setIsOpen(false);
-        onClose(); // call the onClose function passed from MyForm
     }
 
     const [numStudents, setNumStudents] = useState(data.length);
@@ -21,44 +19,52 @@ export default function EditModal({ onClose, data }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        let output = [];
+        setIsLoading(true);
 
-        for (let i = 1; i <= numStudents; i++) {
-            output.push({
-                registerPhone: data[0].registerPhone,
-                studentName: e.target[`studentName${i}`].value,
-                studentPhone: e.target[`studentPhone${i}`].value,
-                school: e.target[`school${i}`].value,
-                year: e.target[`year${i}`].value,
-                subject: e.target[`subject${i}`].value,
+        const output = data.map((v, i) => {
+            return {
+                studentId: v.studentId,
+                registerPhone: v.registerPhone,
+                studentName: e.target[`studentName${i + 1}`].value,
+                studentPhone: e.target[`studentPhone${i + 1}`].value,
+                school: e.target[`school${i + 1}`].value,
+                year: e.target[`year${i + 1}`].value,
+                subject: e.target[`subject${i + 1}`].value,
                 backupPhone: e.target.backupPhone.value,
                 email: e.target.email.value
-            })
-        }
-        console.log(output);
+            }
+        })
 
-        setIsLoading(true);
-        // const JSONdata = JSON.stringify(output);
-        // const endpoint = '/api/edit';
-        // const options = {
-        //     method: 'PUT',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSONdata,
-        // };
-
-        // const response = await fetch(endpoint, options);
-
-        // const result = await response.json();
-
-        // if (result.id == data[0].registerPhone) {
-        //     setFormData(output); // Update formData state with the new values
-        // }
-
-
-        setIsLoading(false);
+        await updateData(output);
     }
+
+    const updateData = async (output) => {
+        try {
+            const JSONdata = JSON.stringify(output);
+            const endpoint = '/api/edit';
+            const options = {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSONdata,
+            };
+
+            const response = await fetch(endpoint, options);
+
+            const result = await response.json();
+
+            if (result.status == 'success') {
+                closeModal();
+                onDataUpdated(registerPhone);
+            }
+        } catch (error) {
+            console.err(error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
 
     const subjectOptions = [
         'Chọn lớp học',
@@ -72,7 +78,7 @@ export default function EditModal({ onClose, data }) {
         let fields = [];
 
         for (let i = 1; i <= numStudents; i++) {
-            const student = formData[i - 1] || {};
+            const student = data[i - 1] || {};
             // console.log(student)
             fields.push(
                 <div key={i}>
