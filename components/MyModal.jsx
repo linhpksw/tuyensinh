@@ -171,7 +171,7 @@ export default function MyModal({ onClose, registerPhone }) {
                                         {numStudents > 0 && renderStudentFields()} {/* Render the student fields only if numStudents > 0 */}
 
                                         {/* Phan ko lap lai */}
-                                        <div className='flex items-center gap-1 mb-4'>
+                                        <div className='flex items-center gap-1 mb-5'>
                                             <UsersIcon className="h-6 w-6 text-rose-600" />
                                             <span className='text-rose-600 font-medium text-lg'>Thông tin phụ huynh</span>
                                         </div>
