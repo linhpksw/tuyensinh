@@ -41,7 +41,6 @@ const Hero = () => {
 
             if (exists) {
                 router.push(`/${inputRegisterPhone}`);
-                setIsLoading(false);
                 return;
             }
 
