@@ -3,14 +3,12 @@ import Head from 'next/head';
 import { client } from '@/lib/mongodb';
 import { useState } from 'react';
 
-(async function connectToDB() {
-    try {
-        await client.connect();
-        console.log('Connected to MongoDB');
-    } catch (err) {
-        console.error('Failed to connect to MongoDB', err);
-    }
-})();
+try {
+    await client.connect();
+    console.log('Connected to MongoDB');
+} catch (err) {
+    console.error('Failed to connect to MongoDB', err);
+}
 
 export default function StudentDetails(props) {
     const [data, setData] = useState(props.data);
