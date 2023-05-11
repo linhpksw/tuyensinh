@@ -1,28 +1,32 @@
 import Container from "./Container";
 import EditModal from "./EditModal";
-
+import DeleteModal from "./DeleteModal";
 import { useState } from "react";
 import { CheckBadgeIcon } from "@heroicons/react/24/solid";
 import { UserIcon, UsersIcon, ArrowRightIcon, HomeIcon } from "@heroicons/react/24/outline";
 
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Confirmation = ({ data, onDataUpdated, registerPhone }) => {
     const [showModal, setShowModal] = useState(false);
-
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleEdit = () => {
         setShowModal(true);
     }
 
     const handleDelete = () => {
-
+        setShowDeleteModal(true);
     }
 
     const closeModal = () => {
         setShowModal(false);
     };
-
+    const closeDeleteModal = () => {
+        setShowDeleteModal(false);
+    };
 
     const listStudents = data.map((v, i) => (
         <div key={i}>
@@ -32,12 +36,17 @@ const Confirmation = ({ data, onDataUpdated, registerPhone }) => {
                     <h3 className="text-lg font-medium leading-6 text-rose-600">{data.length > 1 ? `Thông tin học sinh thứ ${i + 1}` : 'Thông tin học sinh'}</h3>
                 </div>
 
-                {i == 0 ? <div className="hidden sm:block">
+                {i == 0 ? <div className="hidden sm:flex sm:gap-5">
                     <button onClick={handleEdit} className="inline-flex justify-center rounded-md border border-transparent bg-indigo-100 px-4 py-2  font-medium text-indigo-900 hover:bg-indigo-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2">
                         Chỉnh sửa
                     </button>
 
-                    <button onClick={handleDelete} type="button" className="text-rose-700 hover:text-white border border-rose-700 hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 font-medium rounded-lg  px-4 py-2 text-center mr-2 mb-2 ml-4">Xoá thông tin</button>
+                    <button onClick={handleDelete} type="button" className="flex items-center gap-3 text-rose-700 hover:text-white border border-rose-700 hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 font-medium rounded-lg px-4 py-2 text-center">
+                        {isLoading ? 'Đang xoá...' : 'Xoá thông tin'}
+                        {isLoading ?
+                            <div className="border-t-transparent border-solid animate-spin  rounded-full border-rose-900 border-2 h-5 w-5"></div>
+                            : null}
+                    </button>
                 </div> : null}
 
             </div>
@@ -53,6 +62,11 @@ const Confirmation = ({ data, onDataUpdated, registerPhone }) => {
                         <dt className="font-medium text-gray-500">Đăng kí lớp học</dt>
                         <dd className="mt-1 text-gray-900 sm:col-span-2 sm:mt-0">{v.subject}</dd>
                     </div>
+                    <div className="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5">
+                        <dt className="font-medium text-gray-500">Năm sinh</dt>
+                        <dd className="mt-1 text-gray-900 sm:col-span-2 sm:mt-0">{v.year}</dd>
+                    </div>
+
                     <div className="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5">
                         <dt className="font-medium text-gray-500">Trường</dt>
                         <dd className="mt-1 text-gray-900 sm:col-span-2 sm:mt-0">{v.school}</dd>
@@ -97,7 +111,7 @@ const Confirmation = ({ data, onDataUpdated, registerPhone }) => {
                         } else {
                             return ', ' + v.studentName;
                         }
-                    })} đã được xác nhận với thông tin như sau:</p>
+                    })} đã được trung tâm xác nhận.</p>
 
                 <div className="mt-6">
                     {listStudents}
@@ -124,14 +138,23 @@ const Confirmation = ({ data, onDataUpdated, registerPhone }) => {
                     </div>
                 </div>
 
-                <div className="sm:hidden mt-4">
+                <div className="sm:hidden mt-4 flex items-center gap-3">
                     <button onClick={handleEdit} className="inline-flex justify-center rounded-md border border-transparent bg-indigo-100 px-4 py-2  font-medium text-indigo-900 hover:bg-indigo-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2">
                         Chỉnh sửa
                     </button>
 
-                    <button onClick={handleDelete} type="button" className="text-rose-700 hover:text-white border border-rose-700 hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 font-medium rounded-lg  px-4 py-2 text-center mr-2 mb-2 ml-4">Xoá thông tin</button>
+                    <button onClick={handleDelete} type="button" className="flex items-center gap-3 text-rose-700 hover:text-white border border-rose-700 hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 font-medium rounded-lg px-4 py-2 text-center">
+                        {isLoading ?
+                            <div className="border-t-transparent border-solid animate-spin  rounded-full border-rose-900 border-2 h-5 w-5"></div>
+                            : null}
+
+                        {isLoading ? 'Đang xoá...' : 'Xoá thông tin'}
+                    </button>
                 </div>
                 {showModal && <EditModal onClose={closeModal} data={data} onDataUpdated={onDataUpdated} registerPhone={registerPhone} />}
+
+                {showDeleteModal && <DeleteModal onClose={closeDeleteModal} registerPhone={registerPhone} />}
+
             </main>
         </Container>
     )
