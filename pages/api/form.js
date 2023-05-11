@@ -1,4 +1,5 @@
 import { client } from '@/lib/mongodb';
+// Erro when using connectToDB() function
 
 (async function connectToDB() {
     try {
