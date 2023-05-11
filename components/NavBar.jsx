@@ -13,13 +13,8 @@ const Navbar = () => {
                     {({ open }) => (
                         <>
                             <div className='flex flex-wrap items-center justify-between w-full lg:w-auto'>
-                                <Link href='/'>
-                                    <div className='flex items-center gap-2'>
-
-                                        <Image src='/img/logo.svg' alt='logo' width='48' height='48' />
-
-                                        <span className='text-lg text-gray-700'>Toán Ánh Sáng</span>
-                                    </div>
+                                <Link href='/' className='mt-1'>
+                                    <Image src='/img/logo.svg' alt='logo' width='250' height='250' />
                                 </Link>
 
                                 <Disclosure.Button

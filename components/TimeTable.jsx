@@ -19,7 +19,7 @@ const TimeTable = () => {
                     teacher: 'PGS-TS Phùng Văn Mạnh',
                 }
             ],
-            contact: 'Liên hệ cô Hường phụ trách lớp',
+            contact: 'Liên hệ cô Hường',
             phone: '0362860970'
         },
         {
@@ -57,7 +57,7 @@ const TimeTable = () => {
                     teacher: 'PGS-TS Phùng Văn Mạnh',
                 }
             ],
-            contact: 'Liên hệ cô Hường phụ trách lớp',
+            contact: 'Liên hệ cô Hường',
             phone: '0362860970'
         },
         {

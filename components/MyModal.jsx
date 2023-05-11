@@ -137,8 +137,6 @@ export default function MyModal({ onClose, registerPhone }) {
 
         } catch (error) {
             console.err(error);
-        } finally {
-            setIsLoading(false);
         }
     }
 
