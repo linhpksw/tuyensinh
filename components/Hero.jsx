@@ -124,8 +124,8 @@ const Hero = () => {
                     <div className=''>
                         <Image
                             src={heroImg}
-                            width='616'
-                            height='617'
+                            width={1024}
+                            height={768}
                             className={'object-cover'}
                             alt='Hero Illustration'
                             loading='eager'

@@ -49,7 +49,7 @@ const TimeTable = () => {
                 {
                     subject: 'Hình học',
                     time: 'Thứ 5 từ 19h30 - 21h30',
-                    teacher: 'Thầy Lâm, Thầy Quân',
+                    teacher: 'Thầy Lâm',
                 },
                 {
                     subject: 'Đại số - Số học',
