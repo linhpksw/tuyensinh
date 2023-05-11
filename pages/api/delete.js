@@ -1,13 +1,6 @@
 // api/delete.js
 import { client } from '@/lib/mongodb';
 
-try {
-    await client.connect();
-    console.log('Connected to MongoDB');
-} catch (err) {
-    console.error('Failed to connect to MongoDB', err);
-}
-
 export default async function handler(req, res) {
     const { registerPhone } = req.body;
 

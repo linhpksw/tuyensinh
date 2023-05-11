@@ -1,12 +1,5 @@
 import { client } from '@/lib/mongodb';
 
-try {
-    await client.connect();
-    console.log('Connected to MongoDB');
-} catch (err) {
-    console.error('Failed to connect to MongoDB', err);
-}
-
 export default async function handler(req, res) {
     if (req.method !== 'PUT') {
         res.status(405).end(); // Method Not Allowed

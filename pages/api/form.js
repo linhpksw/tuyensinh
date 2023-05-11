@@ -1,12 +1,4 @@
 import { client } from '@/lib/mongodb';
-// Erro when using connectToDB() function
-
-try {
-    await client.connect();
-    console.log('Connected to MongoDB');
-} catch (err) {
-    console.error('Failed to connect to MongoDB', err);
-}
 
 export default async function handler(req, res) {
     const { body } = req;
