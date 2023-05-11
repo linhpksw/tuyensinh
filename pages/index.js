@@ -9,10 +9,7 @@ export default function Home() {
         <>
             <Head>
                 <title>Câu lạc bộ Toán Ánh Sáng</title>
-                <meta
-                    name='description'
-                    content='Câu lạc bộ Ánh Sáng - trung tâm học toán chất lượng cao từ lớp 8 đến lớp 12'
-                />
+                <meta name='description' content='Trung tâm học toán chất lượng cao từ lớp 8 đến lớp 12' />
                 <link rel='icon' href='/favicon.ico' />
             </Head>
 
