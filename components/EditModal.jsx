@@ -1,5 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { useState, Fragment, useEffect } from 'react'
+import { useState, Fragment } from 'react'
 import { UserIcon, UsersIcon } from '@heroicons/react/24/outline'
 
 export default function EditModal({ data, onDataUpdated, registerPhone, onClose }) {

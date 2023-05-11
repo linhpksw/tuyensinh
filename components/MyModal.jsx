@@ -94,17 +94,25 @@ export default function MyModal({ onClose, registerPhone }) {
             const nanoid = customAlphabet(str, 6);
 
             for (let i = 1; i <= numStudents; i++) {
+                const {
+                    [`studentName${i}`]: studentName,
+                    [`studentPhone${i}`]: studentPhone,
+                    [`school${i}`]: school,
+                    [`year${i}`]: year,
+                    [`subject${i}`]: subject,
+                } = e.target;
+
                 data.push({
                     studentId: nanoid(),
                     registerPhone: registerPhone,
-                    studentName: e.target[`studentName${i}`].value,
-                    studentPhone: e.target[`studentPhone${i}`].value,
-                    school: e.target[`school${i}`].value,
-                    year: e.target[`year${i}`].value,
-                    subject: e.target[`subject${i}`].value,
+                    studentName: studentName.value,
+                    studentPhone: studentPhone.value,
+                    school: school.value,
+                    year: year.value,
+                    subject: subject.value,
                     backupPhone: e.target.backupPhone.value,
-                    email: e.target.email.value
-                })
+                    email: e.target.email.value,
+                });
             }
 
             const JSONdata = JSON.stringify(data);
@@ -119,14 +127,12 @@ export default function MyModal({ onClose, registerPhone }) {
 
             const response = await fetch(endpoint, options);
 
-            const result = await response.json();
+            router.prefetch(`/${registerPhone}`);
 
-            const { status } = result;
-
-            if (status === 'failed') {
-                alert('Đã có lỗi xảy ra. Vui lòng thử lại sau!');
-            } else if (status === 'success') {
+            if (response.ok) {
                 router.push(`/${registerPhone}`);
+            } else {
+                alert('Đã có lỗi xảy ra. Vui lòng thử lại sau!');
             }
 
         } catch (error) {
@@ -208,11 +214,11 @@ export default function MyModal({ onClose, registerPhone }) {
                                             <button
                                                 className='flex items-center gap-3 bg-blue-100 rounded-md border border-transparent  font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 px-4 py-2'
                                                 type="submit" disabled={isLoading}>
-                                                {isLoading ? 'Đang xử lý...' : 'Đăng ký'}
 
                                                 {isLoading ?
                                                     <div className="border-t-transparent border-solid animate-spin  rounded-full border-blue-900 border-2 h-5 w-5"></div>
                                                     : null}
+                                                {isLoading ? 'Đang xử lý...' : 'Đăng ký'}
                                             </button>
 
                                             <button type="button" onClick={closeModal} className="text-rose-700 hover:text-white border border-rose-700 hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 font-medium rounded-lg px-4 py-2 text-center">Huỷ đăng ký</button>

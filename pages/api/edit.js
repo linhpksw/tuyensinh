@@ -1,5 +1,14 @@
 import { client } from '@/lib/mongodb';
 
+(async function connectToDB() {
+    try {
+        await client.connect();
+        console.log('Connected to MongoDB');
+    } catch (err) {
+        console.error('Failed to connect to MongoDB', err);
+    }
+})();
+
 export default async function handler(req, res) {
     if (req.method !== 'PUT') {
         res.status(405).end(); // Method Not Allowed
@@ -9,7 +18,6 @@ export default async function handler(req, res) {
     const { body } = req;
 
     try {
-        await client.connect();
         const database = client.db('tuyensinhdb');
         const student = database.collection('student');
 

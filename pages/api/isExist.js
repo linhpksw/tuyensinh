@@ -1,7 +1,15 @@
 import { client } from '@/lib/mongodb';
 
+(async function connectToDB() {
+    try {
+        await client.connect();
+        console.log('Connected to MongoDB');
+    } catch (err) {
+        console.error('Failed to connect to MongoDB', err);
+    }
+})();
+
 async function isExist(phone) {
-    await client.connect();
     const database = client.db('tuyensinhdb');
     const student = database.collection('student');
 

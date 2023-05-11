@@ -6,7 +6,6 @@ import { CheckBadgeIcon } from "@heroicons/react/24/solid";
 import { UserIcon, UsersIcon, ArrowRightIcon, HomeIcon } from "@heroicons/react/24/outline";
 
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 const Confirmation = ({ data, onDataUpdated, registerPhone }) => {
     const [showModal, setShowModal] = useState(false);
