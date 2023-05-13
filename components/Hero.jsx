@@ -5,6 +5,8 @@ import Container from '@/components/Container';
 import { useState } from 'react';
 import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
 import MyModal from './MyModal';
+import ShowImage from './ShowImage';
+
 
 const Hero = () => {
     const [isCorrect, setIsCorrect] = useState(true);
@@ -119,18 +121,14 @@ const Hero = () => {
                     </div>
                 </div >
 
+
+
                 <div className='flex items-center justify-center w-full lg:w-1/2'>
-                    <div className=''>
-                        <Image
-                            src={heroImg}
-                            width={1024}
-                            height={768}
-                            className={'object-cover'}
-                            alt='Hero Illustration'
-                            loading='eager'
-                            placeholder='blur'
-                        />
-                    </div>
+                    <ShowImage />
+
+                    {/* <div className=''>
+                        <Image src={heroImg} alt='Hero Illustration' />
+                    </div> */}
                 </div>
             </Container >
 

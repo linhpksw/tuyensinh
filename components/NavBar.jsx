@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Disclosure, Transition } from '@headlessui/react';
 
+import logoImg from '../public/img/logo.svg';
+
 const Navbar = () => {
     const navigation = ['Về chúng tôi', 'Lịch học', 'Giáo viên', 'Trợ giảng', 'Phản hồi'];
 
@@ -14,7 +16,7 @@ const Navbar = () => {
                         <>
                             <div className='flex flex-wrap items-center justify-between w-full lg:w-auto'>
                                 <Link href='/' className='mt-1'>
-                                    <Image src='/img/logo.svg' alt='logo' width='250' height='250' />
+                                    <Image src={logoImg} alt='logo' width='250' height='250' />
                                 </Link>
 
                                 <Disclosure.Button

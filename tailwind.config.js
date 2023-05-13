@@ -5,10 +5,10 @@ module.exports = {
         './pages/**/*.{js,ts,jsx,tsx,mdx}',
         './components/**/*.{js,ts,jsx,tsx,mdx}',
         './app/**/*.{js,ts,jsx,tsx,mdx}',
+        './node_modules/flowbite/**/*.js',
     ],
-    darkMode: 'class', // or 'media' or 'class'
     theme: {
         extend: {},
     },
-    plugins: [require('@tailwindcss/forms'), require('@tailwindcss/aspect-ratio')],
+    plugins: [require('flowbite/plugin')],
 };
