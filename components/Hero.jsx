@@ -67,10 +67,8 @@ const Hero = () => {
                         <h1 className='text-2xl font-bold leading-snug tracking-tight text-gray-800 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight '>
                             Câu lạc bộ Toán Ánh Sáng
                         </h1>
-                        <p className='py-5 text-base leading-relaxed text-gray-500 lg:text-lg '>
-                            Kính gửi các quý vị phụ huynh học sinh và các con!{"\n"}
-
-                            Năm học 2023 - 2024 Câu lạc bộ Ánh Sáng tổ chức: 2 lớp toán 8 ôn thi vào chuyên toán, 2 lớp 9 ôn thi vào chuyên toán và 1 lớp 9 nâng cao ôn thi toán điều kiện vào 10, có kiểm tra đầu vào để xếp lớp.
+                        <p className='py-5 tracking-wide leading-loose text-gray-500 lg:text-lg '>
+                            Kính gửi các quý vị phụ huynh học sinh và các con! Năm học 2023 - 2024, Câu lạc bộ Toán Ánh Sáng tổ chức: 2 lớp toán 8 ôn thi vào chuyên toán, 2 lớp 9 ôn thi vào chuyên toán và 1 lớp 9 nâng cao ôn thi toán điều kiện vào 10, có kiểm tra đầu vào để xếp lớp. Thông tin chi tiết phụ huynh xem ở phía dưới.
                         </p>
 
                         <form onSubmit={handleForm} className='mt-5 sm:flex sm:w-full sm:max-w-lg'>
