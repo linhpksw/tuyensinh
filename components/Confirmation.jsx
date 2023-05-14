@@ -97,7 +97,7 @@ const Confirmation = ({ data, onDataUpdated, registerPhone }) => {
 
                 <div className="flex items-center gap-2 mt-3">
                     <p className="text-2xl lg:text-4xl font-bold tracking-tighter text-gray-900">Đăng kí học thành công</p>
-                    <CheckBadgeIcon className="w-8 h-8 lg:w-10 lg:h-10 text-green-500" />
+                    <CheckBadgeIcon className="w-8 h-8 lg:w-10 lg:h-10 text-emerald-500" />
                 </div>
 
                 <p className="mt-3 text-base text-gray-500">Đơn đăng kí học cho học sinh {data.length === 1

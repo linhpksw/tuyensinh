@@ -1,6 +1,4 @@
-import Image from 'next/image';
 import { useRouter } from 'next/router';
-import heroImg from '@/public/img/hero.jpg';
 import Container from '@/components/Container';
 import { useState } from 'react';
 import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
@@ -13,6 +11,7 @@ const Hero = () => {
     const [showModal, setShowModal] = useState(false);
     const [registerPhone, setRegisterPhone] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+
 
     const router = useRouter();
 
@@ -43,21 +42,20 @@ const Hero = () => {
 
             if (exists) {
                 router.push(`/${inputRegisterPhone}`);
-                return;
-            }
 
-            setIsCorrect(true);
-            setShowModal(true);
-            setRegisterPhone(inputRegisterPhone);
+            } else {
+                setIsCorrect(true);
+                setShowModal(true);
+                setRegisterPhone(inputRegisterPhone);
+            }
         } else {
             setIsCorrect(false);
         }
-
-        setIsLoading(false);
     }
 
     const closeModal = () => {
         setShowModal(false); // set showModal state to false when the modal is closed
+        setIsLoading(false);
     };
 
 
@@ -72,8 +70,7 @@ const Hero = () => {
                         <p className='py-5 text-base leading-relaxed text-gray-500 lg:text-lg '>
                             Kính gửi các quý vị phụ huynh học sinh và các con!{"\n"}
 
-                            Năm học 2023-2024 CLB Ánh Sáng tổ chức: 2 lớp toán 8 ôn thi vào chuyên toán, 2 lớp 9 ôn thi vào chuyên toán và 1 lớp 9 nâng cao ôn thi toán điều kiện vào 10,  có kiểm tra đầu vào để xếp lớp.
-
+                            Năm học 2023 - 2024 Câu lạc bộ Ánh Sáng tổ chức: 2 lớp toán 8 ôn thi vào chuyên toán, 2 lớp 9 ôn thi vào chuyên toán và 1 lớp 9 nâng cao ôn thi toán điều kiện vào 10, có kiểm tra đầu vào để xếp lớp.
                         </p>
 
                         <form onSubmit={handleForm} className='mt-5 sm:flex sm:w-full sm:max-w-lg'>
@@ -115,7 +112,6 @@ const Hero = () => {
                             </div>
                         </form>
 
-                        {/* bug here */}
 
                         {showModal && <MyModal onClose={closeModal} registerPhone={registerPhone} />}
                     </div>
@@ -125,10 +121,6 @@ const Hero = () => {
 
                 <div className='flex items-center justify-center w-full lg:w-1/2'>
                     <ShowImage />
-
-                    {/* <div className=''>
-                        <Image src={heroImg} alt='Hero Illustration' />
-                    </div> */}
                 </div>
             </Container >
 

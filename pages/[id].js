@@ -27,8 +27,6 @@ export default function StudentDetails(props) {
                     content='Trung tâm toán câu lạc bộ Ánh Sáng luyện thi toán từ lớp 8 đến lớp 12'
                 />
                 <link rel='icon' href='/favicon.ico' />
-
-                <script src='node_modules/flowbite/dist/flowbite.min.js' defer></script>
             </Head>
             <Confirmation data={data} onDataUpdated={fetchData} registerPhone={registerPhone} />
         </>

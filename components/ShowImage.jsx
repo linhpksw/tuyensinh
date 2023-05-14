@@ -50,7 +50,7 @@ const ShowImage = () => {
 
 
     return (
-        <div id="default-carousel" className="relative w-full" data-carousel="slide">
+        <div id="default-carousel" className={`relative w-full`} data-carousel="slide">
             {/* <!-- Carousel wrapper --> */}
             <div className="relative  overflow-hidden rounded-lg h-56 md:h-96 lg:h-80">
                 {items.map((item, index) =>
