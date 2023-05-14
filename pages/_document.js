@@ -3,7 +3,9 @@ import { Html, Head, Main, NextScript } from 'next/document';
 export default function Document() {
     return (
         <Html lang='vn'>
-            <Head />
+            <Head>
+                <script src='/js/flowbite.min.js' defer></script>
+            </Head>
             <body>
                 <Main />
                 <NextScript />

@@ -127,8 +127,6 @@ export default function MyModal({ onClose, registerPhone }) {
 
             const response = await fetch(endpoint, options);
 
-            router.prefetch(`/${registerPhone}`);
-
             if (response.ok) {
                 router.push(`/${registerPhone}`);
             } else {

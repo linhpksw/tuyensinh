@@ -86,9 +86,10 @@ const Confirmation = ({ data, onDataUpdated, registerPhone }) => {
                 <div className="flex justify-between">
                     <h1 className="text-base font-medium text-indigo-600">Cảm ơn quý phụ huynh!</h1>
 
-                    <Link href='/' className="font-medium hidden sm:block">
+                    {/* eslint-disable-next-line */}
+                    <a href='/' className="font-medium hidden sm:block">
                         <div className="flex items-center gap-2 group text-indigo-600 hover:text-indigo-500 transition ease-in-out duration-200">Trang chủ <span aria-hidden="true" className="inline-block translate-x-0 group-hover:translate-x-1 transition-transform ease-in-out duration-200"><ArrowRightIcon className="w-5 h-5" /></span></div>
-                    </Link>
+                    </a>
 
                     <Link href='/' className="sm:hidden">
                         <HomeIcon className="w-6 h-6 text-indigo-600 hover:text-indigo-500" />

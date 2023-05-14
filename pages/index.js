@@ -30,3 +30,14 @@ export default function Home() {
         </>
     );
 }
+
+// This function gets called at build time
+export async function getStaticProps() {
+    // Call an external API endpoint to get data.
+    // You can do whatever you want here.
+    // For now, we'll just return an empty object.
+
+    return {
+        props: {}, // will be passed to the page component as props
+    };
+}

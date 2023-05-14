@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }) {
     return (
         <main className={inter.className}>
             <Component {...pageProps} />
-            <script src='/js/flowbite.min.js' defer></script>
+            {/* <script src='/js/flowbite.min.js' defer></script> */}
         </main>
     );
 }
