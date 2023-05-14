@@ -33,7 +33,7 @@ const Footer = () => {
                 <div className="flex flex-col gap-5 md:flex-row md:justify-center md:items-center md:gap-20 mb-10 md:mb-20">
 
                     <div className="flex items-start md:items-center gap-2">
-                        <MapPinIcon className="w-10 h-10 md:w-6 md:h-6 text-indigo-500" />
+                        <MapPinIcon className="w-12 h-12 md:w-6 md:h-6 text-indigo-500" />
 
                         <p className="text-gray-500">
                             Địa chỉ: <Link className="text-indigo-500 hover:text-indigo-400" href='https://goo.gl/maps/proqtNoL24gvuNxy9'>Trường THPT DL Lê Hồng Phong - số 27 Tô Hiệu, Hà Đông</Link>
