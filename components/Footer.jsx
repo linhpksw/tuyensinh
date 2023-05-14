@@ -28,7 +28,7 @@ const Footer = () => {
                 <div className="flex justify-center">
                     <Image src={logoImg} alt="logo" width={250} height={250} />
                 </div>
-                <p className="mt-4 text-center text-sm text-gray-400">&copy; 2023 Light Mathematics Club. All rights reserved.</p>
+                <p className="mt-4 text-center text-sm text-gray-400">&copy; All rights reserved.</p>
             </div>
 
         </Container>
