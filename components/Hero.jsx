@@ -31,13 +31,12 @@ const Hero = () => {
     const handleForm = async (e) => {
         e.preventDefault();
 
-        setIsLoading(true);
-
         const inputRegisterPhone = e.target.phone.value;
 
         const regexPhoneNumber = /(0[3|5|7|8|9])+([0-9]{8})\b/g;
 
         if (regexPhoneNumber.test(inputRegisterPhone)) {
+            setIsLoading(true);
             const exists = await checkIfPhoneExists(inputRegisterPhone);
 
             if (exists) {
