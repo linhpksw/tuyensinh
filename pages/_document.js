@@ -4,7 +4,7 @@ export default function Document() {
     return (
         <Html lang='vn'>
             <Head>
-                <meta property='og:image' content='https://tuyensinh.clbanhsang.com/img/hsg-1.jpg' />
+                <meta property='og:image' content='https://tuyensinh.clbanhsang.com/img/hocbong-4.jpg' />
 
                 <meta property='og:url' content='https://tuyensinh.clbanhsang.com/' />
                 <meta property='og:type' content='website' />

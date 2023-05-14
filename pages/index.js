@@ -1,3 +1,4 @@
+import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
 import Navbar from '@/components/NavBar';
 import SectionTitle from '@/components/SectionTitle';
@@ -27,6 +28,8 @@ export default function Home() {
                 title='Với nhiều năm kinh nghiệm và phương pháp dạy phù hợp'></SectionTitle>
 
             <Team />
+
+            <Footer />
         </>
     );
 }
