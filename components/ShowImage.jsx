@@ -7,8 +7,8 @@ import hocbong5 from '../public/img/hocbong-5.jpg'
 import thi1 from '../public/img/thi-1.jpg'
 import thi2 from '../public/img/thi-2.jpg'
 
-
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
+
 const ShowImage = () => {
     const items = [
         {
@@ -49,12 +49,12 @@ const ShowImage = () => {
     ]
 
     return (
-        <div id="default-carousel" className={`relative w-full`} data-carousel="slide">
+        <div id="default-carousel" className='relative w-full' data-carousel="slide">
             {/* <!-- Carousel wrapper --> */}
             <div className="relative  overflow-hidden rounded-lg h-56 md:h-96 lg:h-80">
-                {items.map((item, index) =>
-                    <div key={item.src} className="hidden duration-700 ease-in-out" data-carousel-item>
-                        <Image src={item.src} className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt={item.alt} />
+                {items.map((item, i) =>
+                    <div key={i} data-carousel-item>
+                        <Image src={item.src} priority={i == 0 ? true : false} className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt={item.alt} />
 
                         <div className="absolute top-0 left-0 w-full bg-black bg-opacity-50 text-white p-4">
                             <p className="text-center">{item.title}</p>
@@ -65,8 +65,8 @@ const ShowImage = () => {
 
             {/* <!-- Slider indicators --> */}
             <div className="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
-                {Array.from({ length: items.length }).map((_, index) => (
-                    <button key={index} type="button" className="w-3 h-3 rounded-full" aria-current="true" aria-label={`Slide ${index + 1}`} data-carousel-slide-to={index}></button>
+                {items.map((_, i) => (
+                    <button key={i} type="button" className="w-3 h-3 rounded-full" aria-current="true" aria-label={`Slide ${i + 1}`} data-carousel-slide-to={i}></button>
                 ))}
             </div>
 

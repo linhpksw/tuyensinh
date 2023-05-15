@@ -61,7 +61,7 @@ const Hero = () => {
     return (
         <>
             <Container className='flex items-start flex-wrap lg:flex-nowrap lg:gap-10'>
-                <div className='flex items-center w-full lg:w-1/2'>
+                <div id='about' className='flex items-center w-full lg:w-1/2'>
                     <div className='max-w-2xl mb-8 lg:mb-0'>
                         <h1 className='text-2xl font-bold leading-snug tracking-tight text-gray-800 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight '>
                             Câu lạc bộ Toán Ánh Sáng
@@ -113,8 +113,6 @@ const Hero = () => {
                         {showModal && <MyModal onClose={closeModal} registerPhone={registerPhone} />}
                     </div>
                 </div >
-
-
 
                 <div className='flex items-center justify-center w-full lg:w-1/2'>
                     <ShowImage />

@@ -1,22 +1,61 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Disclosure, Transition } from '@headlessui/react';
+import { Link as LinkScroll } from 'react-scroll';
 
 import logoImg from '../public/img/logo.svg';
 
+import { useState, useEffect } from 'react';
+
 const Navbar = () => {
-    const navigation = ['Về chúng tôi', 'Lịch học', 'Giáo viên', 'Trợ giảng', 'Phản hồi'];
+    const navigation = [
+        {
+            name: 'Về chúng tôi',
+            href: 'about',
+            desktop: 'aboutDesktopKey',
+            mobile: 'aboutMobileKey',
+
+        },
+        {
+            name: 'Lịch học',
+            href: 'schedule',
+            desktop: 'scheduleDesktopKey',
+            mobile: 'scheduleMobileKey',
+        },
+        {
+            name: 'Giáo viên',
+            href: 'teacher',
+            desktop: 'teacherDesktopKey',
+            mobile: 'teacherMobileKey',
+        },
+        {
+            name: 'Thông tin',
+            href: 'infor',
+            desktop: 'inforDesktopKey',
+            mobile: 'inforMobileKey',
+        },
+    ]
+
+    const [activeLink, setActiveLink] = useState(null);
+    const [scrollActive, setScrollActive] = useState(false);
+
+    useEffect(() => {
+        window.addEventListener('scroll', () => {
+            setScrollActive(window.scrollY > 20);
+        });
+    }, []);
 
     return (
-        <div className='w-full'>
-            <nav className='container relative flex flex-wrap items-center justify-between p-8 mx-auto lg:justify-between xl:px-0'>
+        <header className={`lg:sticky lg:bg-white  lg:top-0 lg:z-50 lg:px-8 lg:transition-all lg:w-full ${scrollActive ? ' lg:shadow-md lg:pt-1' : ' lg:pt-6'}`}>
+
+            <nav className='p-8 lg:py-4 container relative flex flex-wrap items-center justify-between mx-auto lg:justify-between xl:px-0'>
                 {/* Logo  */}
                 <Disclosure>
                     {({ open }) => (
                         <>
                             <div className='flex flex-wrap items-center justify-between w-full lg:w-auto'>
                                 <Link href='/' className='mt-1'>
-                                    <Image src={logoImg} alt='logo' width='250' height='250' />
+                                    <Image src={logoImg} alt='logo' width={250} height={250} />
                                 </Link>
 
                                 <Disclosure.Button
@@ -51,13 +90,20 @@ const Navbar = () => {
                                     leaveTo='transform scale-95 opacity-0'>
                                     <Disclosure.Panel className='flex flex-wrap w-full mt-5 lg:hidden'>
                                         <>
-                                            {navigation.map((item, index) => (
-                                                <Link
-                                                    key={index}
-                                                    href='/'
-                                                    className='w-full px-4 py-2 -ml-4 text-gray-500 rounded-md hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none'>
-                                                    {item}
-                                                </Link>
+                                            {navigation.map((item) => (
+                                                <LinkScroll
+                                                    key={item.mobile}
+                                                    activeClass='active'
+                                                    to={item.href}
+                                                    spy={true}
+                                                    smooth={true}
+                                                    duration={700}
+                                                    onSetActive={() => {
+                                                        setActiveLink(item.href);
+                                                    }}
+                                                    className='w-full px-4 py-2 -ml-4 text-gray-500 rounded-md hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none cursor-pointer'>
+                                                    {item.name}
+                                                </LinkScroll>
                                             ))}
                                         </>
                                     </Disclosure.Panel>
@@ -70,21 +116,34 @@ const Navbar = () => {
                 {/* menu  */}
                 <div className='hidden text-center lg:flex lg:items-center'>
                     <ul className='items-center justify-end flex-1 pt-6 list-none lg:pt-0 lg:flex'>
-                        {navigation.map((menu, index) => (
-                            <li className='mr-3 nav__item' key={index}>
-                                <Link
-                                    href='/'
-                                    className='inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800'>
-                                    {menu}
-                                </Link>
-                            </li>
+                        {navigation.map((menu) => (
+
+                            <LinkScroll
+                                key={menu.desktop}
+                                activeClass='active'
+                                to={menu.href}
+                                spy={true}
+                                smooth={true}
+                                duration={700}
+                                offset={-150}
+                                onSetActive={() => {
+                                    setActiveLink(menu.href);
+                                }}
+                                className={
+                                    'font-medium text-lg animation-hover relative mx-2 inline-block cursor-pointer px-3 py-1' +
+                                    (activeLink === menu.href
+                                        ? ' animation-active text-indigo-500 '
+                                        : ' text-black-500 hover:text-indigo-500')
+                                }>
+                                {menu.name}
+                            </LinkScroll>
                         ))}
                     </ul>
                 </div>
 
 
             </nav>
-        </div>
+        </header>
     );
 };
 

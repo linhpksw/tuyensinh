@@ -19,11 +19,15 @@ export default function Home() {
             <Navbar />
             <Hero />
 
-            <SectionTitle pretitle='Thời gian học' title='Với giờ giấc cố định trong suốt học kỳ'></SectionTitle>
+            <SectionTitle
+                id='schedule'
+                pretitle='Thời gian học'
+                title='Với giờ giấc cố định trong suốt học kỳ'></SectionTitle>
 
             <TimeTable />
 
             <SectionTitle
+                id='teacher'
                 pretitle='Đội ngũ giáo viên'
                 title='Với nhiều năm kinh nghiệm và phương pháp dạy phù hợp'></SectionTitle>
 
