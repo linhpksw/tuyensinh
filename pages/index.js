@@ -5,6 +5,7 @@ import SectionTitle from '@/components/SectionTitle';
 import Team from '@/components/Team';
 import TimeTable from '@/components/TimeTable';
 import Head from 'next/head';
+import BackToTop from '@/components/BackToTop';
 
 export default function Home() {
     return (
@@ -32,6 +33,8 @@ export default function Home() {
                 title='Với nhiều năm kinh nghiệm và phương pháp dạy phù hợp'></SectionTitle>
 
             <Team />
+
+            <BackToTop />
 
             <Footer />
         </>
