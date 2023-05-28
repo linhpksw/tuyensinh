@@ -51,9 +51,7 @@ export default function EditModal({ data, onDataUpdated, registerPhone, onClose 
 
             const response = await fetch(endpoint, options);
 
-            const result = await response.json();
-
-            if (result.status == 'success') {
+            if (response.ok) {
                 closeModal();
                 onDataUpdated(registerPhone);
             }

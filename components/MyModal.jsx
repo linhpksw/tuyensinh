@@ -4,6 +4,7 @@ import { UserIcon, UsersIcon } from '@heroicons/react/24/outline'
 import { useRouter } from 'next/router';
 import { customAlphabet } from 'nanoid';
 
+
 export default function MyModal({ onClose, registerPhone }) {
     const router = useRouter();
 
@@ -127,15 +128,30 @@ export default function MyModal({ onClose, registerPhone }) {
             };
 
             const response = await fetch(endpoint, options);
+            const result = await response.json();
 
-            if (response.ok) {
+            if (result.status == 'success') {
+                const emailResponse = await fetch("/api/send-email", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ data }),
+                });
+
+                if (emailResponse.ok) {
+                    console.log("Confirmation email sent!");
+                } else {
+                    console.log("Failed to send confirmation email!");
+                }
+
                 router.push(`/${registerPhone}`);
             } else {
                 alert('Đã có lỗi xảy ra. Vui lòng thử lại sau!');
             }
 
         } catch (error) {
-            console.err(error);
+            console.log(error);
         } finally {
         }
     }

@@ -9,19 +9,19 @@ export default async function handler(req, res) {
 
         const docs = body.map((item) => ({ ...item }));
 
-        // const docs = body.map((item) => {
-        //     return {
-        //         studentId: item.studentId,
-        //         registerPhone: item.registerPhone,
-        //         studentName: item.studentName,
-        //         studentPhone: item.studentPhone,
-        //         school: item.school,
-        //         year: item.year,
-        //         subject: item.subject,
-        //         backupPhone: item.backupPhone,
-        //         email: item.email,
-        //     };
-        // });
+        /*  const docs = body.map((item) => {
+            return {
+                studentId: item.studentId,
+                registerPhone: item.registerPhone,
+                studentName: item.studentName,
+                studentPhone: item.studentPhone,
+                school: item.school,
+                year: item.year,
+                subject: item.subject,
+                backupPhone: item.backupPhone,
+                email: item.email,
+            };
+        }); */
 
         const result = await student.insertMany(docs, { ordered: true });
 
