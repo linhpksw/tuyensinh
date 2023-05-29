@@ -54,6 +54,8 @@ function generateHtmlContent(data) {
 
     const note = info[data[0].subject];
 
+    const studentNum = data.length;
+
     let htmlContent = `
     <head>
   <style>
@@ -63,7 +65,7 @@ function generateHtmlContent(data) {
     }
 
     .info-table {
-      width: 500;
+      width: 500px;
       border-collapse: collapse;
       color: #374151;
     }
@@ -94,7 +96,7 @@ function generateHtmlContent(data) {
   ${data
       .map(
           (item, index) => `
-  <h2 style="color:e11d48">Thông tin học sinh thứ ${index + 1}</h2>
+  <h2 style="color: #e11d48">${studentNum > 1 ? 'Thông tin học sinh thứ ' + (index + 1) : 'Thông tin học sinh'}</h2>
   <table class="info-table">
     <tr style="background-color: #f2f2f2;">
       <td>Họ và tên</td>
@@ -121,11 +123,11 @@ function generateHtmlContent(data) {
       )
       .join('')}
 
-  <h2 style="color:e11d48">Thông tin phụ huynh</h2>
+  <h2 style="color: #e11d48">Thông tin phụ huynh</h2>
   <table class="info-table">
     <tr style="background-color: #f2f2f2;">
       <td>Số điện thoại đăng ký</td>
-      <td>${data[0].email}</td>
+      <td>${data[0].registerPhone}</td>
     </tr>
     <tr>
       <td>Số điện thoại dự phòng</td>
