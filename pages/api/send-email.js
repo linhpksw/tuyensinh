@@ -34,7 +34,7 @@ const sendEmail = async (req, res) => {
         });
     } catch (error) {
         console.log('An error occurred in the sendEmail function:', error);
-        res.status(500).send(err);
+        res.status(500).send(error);
     }
 };
 
@@ -49,7 +49,7 @@ function generateHtmlContent(data) {
         'Lớp 9A1 chuyên toán':
             'lịch kiểm tra xếp lớp dự kiến sẽ diễn ra vào 15h chiều Chủ nhật 04/06 và Khai giảng vào Thứ Năm 08/06.',
         'Lớp 9A2 toán nâng cao':
-            'đối với lớp toán nâng cao, học sinh không cần kiểm tra xếp lớp đầu vào. Lịch khai giảng sẽ vào Chủ nhật 18/06',
+            'đối với lớp toán nâng cao, học sinh không cần kiểm tra xếp lớp đầu vào. Lịch khai giảng sẽ vào Chủ nhật 18/06.',
     };
 
     const note = info[data[0].subject];
