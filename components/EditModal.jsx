@@ -35,6 +35,9 @@ export default function EditModal({ data, onDataUpdated, registerPhone, onClose 
         })
 
         await updateData(output);
+
+
+
     }
 
     const updateData = async (output) => {
@@ -52,6 +55,20 @@ export default function EditModal({ data, onDataUpdated, registerPhone, onClose 
             const response = await fetch(endpoint, options);
 
             if (response.ok) {
+                const emailResponse = await fetch("/api/send-email", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ output }),
+                });
+
+                if (emailResponse.ok) {
+                    console.log("Confirmation email sent!");
+                } else {
+                    console.log("Failed to send confirmation email!");
+                }
+
                 closeModal();
                 onDataUpdated(registerPhone);
             }
