@@ -45,9 +45,9 @@ function generateHtmlContent(data) {
         'Lớp 8 chuyên toán':
             'lịch kiểm tra xếp lớp dự kiến sẽ diễn ra vào 8h sáng Chủ nhật 16/07 và khai giảng vào Thứ Ba 18/07.',
         'Lớp 9A0 chuyên toán':
-            'lịch kiểm tra xếp lớp sẽ diễn ra vào 17h - 19h Chủ nhật 04/06 và khai giảng vào Thứ Năm 08/06.',
+            'lịch kiểm tra xếp lớp đợt 2 sẽ diễn ra vào 17h Chủ nhật 18/06 và khai giảng từ Thứ Năm 08/06.',
         'Lớp 9A1 chuyên toán':
-            'lịch kiểm tra xếp lớp sẽ diễn ra vào 17h - 19h Chủ nhật 04/06 và Khai giảng vào Thứ Năm 08/06.',
+            'lịch kiểm tra xếp lớp đợt 2 sẽ diễn ra vào 17h Chủ nhật 18/06 và khai giảng từ Thứ Năm 08/06.',
         'Lớp 9A2 toán nâng cao':
             'đối với lớp toán nâng cao, học sinh không cần kiểm tra xếp lớp đầu vào. Lịch khai giảng sẽ vào Chủ nhật 18/06.',
     };

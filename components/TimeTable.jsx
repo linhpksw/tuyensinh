@@ -25,7 +25,7 @@ const TimeTable = () => {
         {
             no: 2,
             grade: 'LỚP 9A0 CHUYÊN TOÁN',
-            opening: 'Kiểm tra xếp lớp từ 17h - 19h ngày Chủ nhật 04/06 - Khai giảng ngày Thứ Năm 08/06',
+            opening: 'Kiểm tra xếp lớp đợt 2 từ 17h - 19h ngày Chủ nhật 18/06 - Khai giảng từ ngày Thứ Năm 08/06',
             child: [
                 {
                     subject: 'Hình học',
@@ -44,7 +44,7 @@ const TimeTable = () => {
         {
             no: 3,
             grade: 'LỚP 9A1 CHUYÊN TOÁN',
-            opening: 'Kiểm tra xếp lớp từ 17h - 19h ngày Chủ nhật 04/06 - Khai giảng ngày Thứ Năm 08/06',
+            opening: 'Kiểm tra xếp lớp đợt 2 từ 17h - 19h ngày Chủ nhật 18/06 - Khai giảng từ ngày Thứ Năm 08/06',
             child: [
                 {
                     subject: 'Hình học',
