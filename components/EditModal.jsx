@@ -39,19 +39,12 @@ export default function EditModal({ data, onDataUpdated, registerPhone, onClose 
 
     const updateData = async (data) => {
         try {
-            const JSONdata = JSON.stringify(data);
-            const endpoint = '/api/edit';
-            const options = {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSONdata,
-            };
+            // Delete the old submission
+            await deleteOldData(data);
+            // Add the new submission
+            const addResponse = await addNewData(data);
 
-            const response = await fetch(endpoint, options);
-
-            if (response.ok) {
+            if (addResponse.status === 'success') {
                 const emailResponse = await fetch("/api/send-email", {
                     method: "POST",
                     headers: {
@@ -69,15 +62,55 @@ export default function EditModal({ data, onDataUpdated, registerPhone, onClose 
                 onDataUpdated(registerPhone);
             }
         } catch (error) {
-            console.err(error);
+            console.log(error);
         } finally {
             setIsLoading(false);
         }
     };
 
+    const deleteOldData = async (data) => {
+        try {
+            const response = await fetch('/api/delete', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ registerPhone: data[0].registerPhone }),
+            });
+
+            const responseData = await response.json();
+
+            if (responseData.status === 'error') {
+                throw new Error('Failed to delete old submission');
+            }
+        } catch (error) {
+            throw new Error('An error occurred while deleting old submission');
+        }
+    };
+
+    const addNewData = async (data) => {
+        try {
+            const JSONdata = JSON.stringify(data);
+            const endpoint = '/api/add';
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSONdata,
+            };
+
+            const response = await fetch(endpoint, options);
+            const responseData = await response.json();
+
+            return responseData;
+        } catch (error) {
+            throw new Error('An error occurred while adding new submission');
+        }
+    };
+
 
     const subjectOptions = [
-        'Chọn lớp học',
         'Lớp 8 chuyên toán',
         'Lớp 9A0 chuyên toán',
         'Lớp 9A1 chuyên toán',
@@ -112,7 +145,7 @@ export default function EditModal({ data, onDataUpdated, registerPhone, onClose 
                         <div className="relative z-0 w-full mb-6 group">
                             <input
                                 defaultValue={student.year || ''}
-                                id={`year${i}`} type="number" name="year" className="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                id={`year${i}`} type="number" min="2000" max="2023" name="year" className="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                             <label htmlFor="year" className="peer-focus:font-medium absolute text-gray-500 duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-1 peer-focus:scale-75 peer-focus:-translate-y-6">Năm sinh <span className='text-red-600'>*</span></label>
                         </div>
                     </div>
@@ -140,6 +173,7 @@ export default function EditModal({ data, onDataUpdated, registerPhone, onClose 
                         <select
                             defaultValue={student.subject || ''}
                             id={`subject${i}`} className="mb-5 block py-2.5 px-0 w-full text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-gray-300 peer" required>
+                            <option value="" className='text-gray-500'>Chọn lớp học...</option>
                             {subjectOptions.map((option) => (
                                 <option key={option} value={option} className=' text-gray-500'>{option}</option>
                             ))}

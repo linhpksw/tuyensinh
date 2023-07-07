@@ -111,7 +111,7 @@ const Confirmation = ({ data, onDataUpdated, registerPhone }) => {
                         } else {
                             return ', ' + v.studentName;
                         }
-                    })} đã được trung tâm xác nhận và gửi về địa chỉ email mà phụ huynh đã đăng ký.</p>
+                    })} đã được trung tâm xác nhận và gửi về email {data[0].email} của quý phụ huynh.</p>
 
                 <div className="mt-6">
                     {listStudents}
