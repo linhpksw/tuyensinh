@@ -39,10 +39,28 @@ const Navbar = () => {
     const [activeLink, setActiveLink] = useState(null);
     const [scrollActive, setScrollActive] = useState(false);
 
+    const debounce = (func, wait) => {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    };
+
+
     useEffect(() => {
-        window.addEventListener('scroll', () => {
+        const checkScroll = debounce(() => {
             setScrollActive(window.scrollY > 20);
-        });
+        }, 50);  // Change delay as needed
+
+        window.addEventListener('scroll', checkScroll);
+
+        // Cleanup function
+        return () => window.removeEventListener('scroll', checkScroll);
     }, []);
 
     return (
