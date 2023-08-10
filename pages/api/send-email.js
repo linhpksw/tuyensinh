@@ -43,7 +43,7 @@ export default sendEmail;
 function generateHtmlContent(data) {
     const info = {
         'Lớp 8 chuyên toán':
-            'Lớp đã khai giảng vào Thứ Ba 18/07 và có tổ chức thêm lịch kiểm tra xếp lớp đợt 2 vào Chủ nhật 23/07 và Chủ nhật 30/07 từ 16h - 18h.',
+            'Lớp đã khai giảng vào Thứ Ba 18/07 và có tổ chức thêm lịch kiểm tra xếp lớp vào chiều Chủ nhật hàng tuần (16h - 17h45).',
         'Lớp 9A0 chuyên toán':
             'lịch kiểm tra xếp lớp đợt 2 sẽ diễn ra vào 17h Chủ nhật 18/06 và khai giảng từ Thứ Năm 08/06.',
         'Lớp 9A1 chuyên toán':

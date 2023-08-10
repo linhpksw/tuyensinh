@@ -6,7 +6,7 @@ const TimeTable = () => {
         {
             no: 1,
             grade: 'LỚP 8 CHUYÊN TOÁN',
-            opening: 'Kiểm tra xếp lớp đợt 2 vào Chủ nhật 23/07 và đợt 3 vào Chủ nhật 30/07 (Thời gian 16h - 18h)  - Khai giảng ngày Thứ Ba 18/07',
+            opening: 'Kiểm tra xếp lớp vào chiều Chủ nhật hàng tuần (16h - 17h45) - Khai giảng từ ngày Thứ Ba 18/07',
             child: [
                 {
                     subject: 'Hình học',
